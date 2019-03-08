@@ -1,0 +1,367 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass[12pt,phd ,a4paper,oneside]{ucl_thesis}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{textgreek}
+\usepackage{longtable}
+\usepackage{lipsum}
+
+\newlength{\Oldarrayrulewidth}
+\newcommand{\Cline}[2]{%
+	\noalign{\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+	\noalign{\global\setlength{\arrayrulewidth}{#1}}\cline{#2}%
+	\noalign{\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}}
+}
+
+\definecolor{intnull}{RGB}{213,229,255}
+\definecolor{lightgreen}{RGB}{152,251,152}
+\definecolor{lightyellow}{RGB}{255,255,0}
+\definecolor{red}{RGB}{240,128,128}
+
+\input{MainPackages}
+
+\input{LinksAndMetadata}
+
+\input{FloatSettings} % For things like figures and tables
+\input{BibSettings} % For bibliographies
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\title{UCL PhD Latex template}
+\author{Average Joe}
+\department{Department of Big and Important Things}
+
+
+\begin{document}
+
+\maketitle
+%\makedeclaration
+\nobibliography*
+\newpage
+
+I, Average Joe, confirm that the work presented in this thesis is my own. Where information has been derived from other sources, I confirm that this has been indicated in the thesis.
+
+\begin{abstract}
+	\lipsum
+\end{abstract}
+
+\begin{acknowledgements}
+	\lipsum
+\end{acknowledgements}
+
+\setcounter{tocdepth}{2} 
+% Setting this higher means you get contents entries for
+% more minor section headers.
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter*{Thesis Aim}\label{ThesisAim} % By using the star you avoid the title to be add to the table of content
+\markboth{Thesis Aim}{Thesis Aim} % This set the header of the page correctly
+	\lipsum
+	
+\chapter*{Thesis Outline}\label{ThesisOutline}
+\markboth{Thesis Outline}{Thesis Outline} % This set the header of the page correctly
+	\lipsum
+\begin{enumerate}
+	\item \textbf{Part \ref{PartOne} One}: one
+	\begin{enumerate}
+		\item[1.1] Chapters \ref{chapter1}.
+		\item[1.2] Chapter \ref{chapter2}.
+	\end{enumerate}
+	\item \textbf{Part \ref{Two} Two}: 
+	\begin{enumerate}
+		\item[2.1] Chapter \ref{chapter3}.
+		\item[2.2] Review of \cite{Cinelli2017}:
+		\begin{enumerate}
+			\item[2.2.1] Chapter \ref{chapter4}.
+			\item[2.2.2] Chapter \ref{chapter5}.
+		\end{enumerate}
+	\end{enumerate}
+	\item \textbf{Part \ref{Discussion} Discussion}: Discussion: Chapter \ref{chapter}
+\end{enumerate}
+
+	\lipsum
+	
+\part{Part One}\label{PartOne}
+	\lipsum
+\chapter{chapter One}\label{chapter1}%\label{immuneSystem} % 4
+	\lipsum
+\section{Section One}\label{SectionOne}
+	\lipsum
+	
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1\linewidth]{images/mike-burke-63930-unsplash.jpg}
+	\caption[Short Title, it goes in the table of content]{\textbf{Longer Title:} The quick fox jumped over the lazy dog. Photo by Mike Burke on Unsplash}
+	\label{figure1}
+\end{figure}
+	\lipsum
+
+\subsection{Subsection One}
+	\lipsum
+\subsubsection{Subsubsection One}
+	\lipsum
+	
+\begin{table}[ht]
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline \multicolumn{3}{|c|}{\textbf{Number of segments}} \\
+			\hline \textbf{Regions}	& \textbf{$\alpha$ Chain} & \textbf{$\beta$ Chain} \\ 
+			\hline Variable (V) & 47 & 54 \\ 
+			\hline Diversity (D)& - & 1,1(2) \\ 
+			\hline Joining (J)	& 57 & 6,7(13) \\ 
+			\hline Constant (C) & 1 & 2 \\ 
+			\hline \multicolumn{3}{|c|}{\textbf{Possible Combinations}} \\
+			\hline Segments combinations & 2,679 & 2,808\\
+			\hline Merging $\alpha$ and $\beta$ & \multicolumn{2}{c|}{7,522,632} \\
+			\hline P-N insertions & \multicolumn{2}{c|}{$10^{15}/10^{20}$} \\
+			\hline 
+		\end{tabular}
+		\caption[Short Title]{\textbf{Long Title:} The quick fox jumped over the lazy dog.}
+		\label{table1}
+	\end{center}	
+\end{table}
+
+
+\part{Results}\label{PartTwo}
+\chapter{Chapter 2}\label{chapter2}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline \multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}\\ Something\end{tabular}}} & \multicolumn{2}{c|}{\textbf{Something}} \\ \hline
+		\multicolumn{2}{|c|}{\textbf{Something}}	& \multicolumn{2}{c|}{6}	& \multicolumn{2}{c|}{3}	\\ \hline
+		\multicolumn{2}{|c|}{\textbf{Something}}	& Something	 & Something	& Something	& Something	\\ \hline
+		\multirow{4}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Something\\ Something \end{tabular}}} & 5 & 3 & 3 & & \\ \cline{2-6}
+		& 7 &	&	& 2	 & 3	\\ \cline{2-6} 
+		& 14 & 3 & 3 &	&	 \\ \cline{2-6} 
+		& 60 & 3 & 3 & 2 & 2	\\ \hline
+	\end{tabular}
+	\caption[the quick ]{The quick fox jumped over the lazy dog}\label{table2}
+\end{table}%ok
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline \textbf{}& \textbf{Something} & \textbf{Something} & \textbf{Something} & \textbf{Something} & \textbf{Something} \\
+		\hline \textbf{Something}& $2.1\cdot10^{6}$ & $3.4\cdot10^{5}$ & $1 \cdot10^{6}$ & $1 \cdot10^{6}$ & $7 \cdot10^{SD6}$ \\
+		\hline \textbf{Something} & $2.6\cdot10^{6}$ & $2.5\cdot10^{5}$ & $7.5\cdot10^{5}$ & $6.8\cdot10^{5}$ & $3.4\cdot10^{6}$ \\ \hline
+		\hline \textbf{}& \textbf{Something}	& \textbf{Something} & \textbf{Something} & \textbf{1st} & \textbf{2nd} \\
+		\hline \textbf{Something}& $1\cdot10^{6}$ & $3.9\cdot10^{5}$ & $4.1\cdot10^{6}$ & $8.9 \cdot10^{5}$ & $4.5 \cdot10^{6}$ \\
+		\hline \textbf{Something} & $3.2\cdot10^{6}$ & $1.3\cdot10^{5}$ & $1.7\cdot10^{6}$ & $6.6\cdot10^{5}$ & $3.3\cdot10^{6}$ \\		
+		\hline
+	\end{tabular}
+	\caption[Something]{The quick fox jumped over the lazy dog}\label{table3}
+\end{table}
+
+\clearpage
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline \textbf{}& \textbf{Something} & \textbf{Something} & \textbf{Something} & \textbf{Something} & \textbf{Something} \\
+		\hline \textbf{Something}& $2.4\cdot10^{5}$ & $8.2\cdot10^{4}$ & $2.1\cdot10^{5}$ & $3.2\cdot10^{5}$ & $3.9\cdot10^{5}$ \\
+		\hline \textbf{Something} & $1.4\cdot10^{5}	$ & $5.1\cdot10^{4}$ & $4.6\cdot10^{4}$ & $1.4\cdot10^{5}$ & $1\cdot10^{5}$ \\ \hline
+		
+		\hline \textbf{}& \textbf{Something}	& \textbf{Something\_1} & \textbf{Something\_1} & \textbf{1st} & \textbf{2nd} \\
+		\hline \textbf{Something}& $2.6\cdot10^{5}$ & $1\cdot10^{5}$ & $3.5\cdot10^{5}$ & $1.9\cdot10^{5}$ & $3.3\cdot10^{5}$ \\
+		\hline \textbf{Something} & $5.4\cdot10^{4}$ & $2.2\cdot10^{4}$ & $1.3\cdot10^{5}$ & $1.3\cdot10^{5}$ & $1.2\cdot10^{5}$ \\		
+		\hline
+	\end{tabular}
+	\caption[Something]{The quick fox jumped over the lazy dog}\label{table4}
+\end{table}
+
+
+\clearpage
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline 	\textbf{Length} & \textbf{$\leq$ 14} & \textbf{15} & \textbf{16} & \textbf{17} & \textbf{18} & \textbf{$\geq$19} \\ \hline
+		\multirow{2}{*}{\textbf{Percentage}} & \multirow{2}{*}{11.15} & 13.85 & 23.31 & 27.88 & 17.21 & \multirow{2}{*}{6.6} \\ \cline{3-6}
+		& & \multicolumn{4}{c|}{82.25} &\\ \hline
+	\end{tabular}
+	\caption[Something]{The quick fox jumped over the lazy dog}\label{table5}
+\end{table}
+
+\begin{equation}\label{equation1}%yes
+J\left( A,B\right) =\frac{\left| A \bigcap B \right| }{\left| A \bigcup B\right| };\ 0 \geq J(A,B) \geq 1
+\end{equation}
+
+
+\begin{equation}\label{equation2}%yes
+G=\frac{\sum_{i=1}^{n} \sum_{j=1}^{n}\left| x_{i}-x_{j}\right| }{2\sum_{i=1}^{n} \sum_{j=1}^{n}x_{j}}=
+\frac{\sum_{i=1}^{n} \sum_{j=1}^{n}\left| x_{i}-x_{j}\right| }{2n\sum_{i=1}^{n} x_{i}}
+\end{equation}
+
+\begin{equation}
+Gini\ Coefficient = \frac{A}{A+B}
+\end{equation}
+
+\begin{equation}
+\left [ \frac{1}{n}\sum_{i=1}^{n}\max \left ( 0,1-y_{i}\left ( \vec{w}\cdot\vec{x_{i}}-b \right ) \right ) \right ]+\lambda\left \| \vec{w} \right \|^{2}
+\end{equation}
+\lipsum
+
+\chapter{The Long List}\label{chapter3}
+	\lipsum
+
+\begin{enumerate}
+	\item[1] \textbf{Step 1}
+\end{enumerate}
+	\lipsum
+\begin{enumerate}
+	\item[2] \textbf{Step 2}
+\end{enumerate}
+	\lipsum
+\begin{enumerate}	
+	\item[3] \textbf{Step 3}
+\end{enumerate}
+	
+	\lipsum
+\clearpage	
+\begin{longtable}{|c|c|m{0.75\linewidth}|}%[ht]%http://www.tablesgenerator.com/
+		\hline 
+		\textbf{Something} & 	\textbf{Something} & 	\textbf{Something}\\ \hline 
+		
+		Something & 5 & In \cite{Cinelli2017} The quick fox jumped over the lazy dog. \\\hline 
+		
+		 Something & 5 & The quick fox jumped over the lazy dog.\\\hline 
+		
+	 	Something& 10 & The quick fox jumped over the lazy dog: 
+		\begin{enumerate}
+			\item The quick fox jumped over the lazy dog.
+			\item The quick fox jumped over the lazy dog.
+			\item The quick fox jumped over the lazy dog.
+		\end{enumerate}
+		\\\hline 
+		
+	Arbitrary &20 & The quick fox jumped over the lazy dog. \\\hline 
+%	\end{tabular} 
+	\caption[Something]{The quick fox jumped over the lazy dog.}\label{table8}
+\end{longtable}
+
+
+
+\begin{enumerate}	
+	\item[4] \textbf{Step 4}
+\end{enumerate}
+
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Tests} & \cellcolor{intnull}\textbf{Blue} & \cellcolor{lightgreen}\textbf{Green} & \cellcolor{red}\textbf{Red} \\ \hline
+		Blue 1 & \cellcolor{intnull}100 & & \\ \hline
+		Blue 2 & \cellcolor{intnull}80 & 10 & 10 \\ \hline
+		Green 1 & & \cellcolor{lightgreen}100 & \\ \hline
+		Green 2 & & \cellcolor{lightgreen} & 100 \\ \hline
+		Red 1 & & & \cellcolor{red} 100 \\ \hline
+		Red 2 & & &\cellcolor{red} 100 \\ \hline
+	\end{tabular}
+	\caption[Something]{The quick fox jumped over the lazy dog.}\label{table9}
+\end{table}
+
+\section{Experiments and Results}\label{SVMExperimentsExperiments}
+
+\begin{equation}\label{equation20}
+\begin{matrix}
+\mu_{1}=\mu_{2}, & \sigma_{1}=\sigma_{2}\\ 
+\mu_{1}=\mu_{2}, & \sigma_{1}\neq\sigma_{2}\\ 
+\mu_{1}\neq\mu_{2}, & \sigma_{1}=\sigma_{2}\\ 
+\mu_{1}\neq\mu_{2}, & \sigma_{1}\neq\sigma_{2}
+\end{matrix}
+\end{equation}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c||c|c|c||c|c|c|}\hline
+		\multicolumn{2}{|c|}{} & \multicolumn{6}{c|}{\textbf{Mean of population 1 and population 2}} \\ \cline{3-8}
+		\multicolumn{2}{|c|}{} & 1, 1 & 5, 5 &\multicolumn{1}{c|}{10, 10} & 1, 2.5 & 1, 5 & 1,10 \\\hhline{========} \cline{1-8}
+		\multirow{8}{*}{\textbf{SD}} & 1, 1 & \cellcolor{lightyellow}50 & \cellcolor{lightyellow}48.32 & \cellcolor{lightyellow}49.66 & 
+		\cellcolor{red}77.41 & 
+		\cellcolor{red}97.64 & 
+		\cellcolor{red}100 \\ \cline{2-8}
+		& 5, 5 & 
+		\cellcolor{lightyellow}49.75 & \cellcolor{lightyellow}49.47 & 
+		\cellcolor{lightyellow}49.79 &
+		\cellcolor{red}55.39 &
+		\cellcolor{red}65.22 & 
+		\cellcolor{red}81.33 \\ \cline{2-8}
+		& 50, 50 & 
+		\cellcolor{lightyellow}48.95 & 
+		\cellcolor{lightyellow}49.49 & 
+		\cellcolor{lightyellow}49.76 & 
+		\cellcolor{red}50.74 & 
+		\cellcolor{red}50.75 & 
+		\cellcolor{red}53.73 \\ \cline{2-8}
+		& 10$^{2} $, 10$^{2} $ & 
+		\cellcolor{lightyellow}49.38 & 
+		\cellcolor{lightyellow}50.48 & 
+		\cellcolor{lightyellow}49.95 & 
+		\cellcolor{red}50.11 & 
+		\cellcolor{red}50.62 & 
+		\cellcolor{red}51.76 \\\hhline{~=======} %\cline{2-8}
+		& 1, 5 & \cellcolor{lightgreen}81.97 & \cellcolor{lightgreen}82.35 & \cellcolor{lightgreen}82.16 & \cellcolor{intnull}82.8 &\cellcolor{intnull} \cellcolor{intnull}86.36 & \cellcolor{intnull}95.55 \\ \cline{2-8}
+		& 1, 25 & \cellcolor{lightgreen}95.46 & \cellcolor{lightgreen}95.45 & \cellcolor{lightgreen}95.41 &\cellcolor{intnull} 95.37 & \cellcolor{intnull}95.47 & \cellcolor{intnull}95.57 \\ \cline{2-8}
+		& 1, 50 & \cellcolor{lightgreen}97.49 & \cellcolor{lightgreen}97.53 & \cellcolor{lightgreen}97.61 &\cellcolor{intnull} 97.48 & \cellcolor{intnull}97.67 & \cellcolor{intnull}97.43 \\ \cline{2-8}
+		& 1, 100 & \cellcolor{lightgreen}98.62 & \cellcolor{lightgreen}98.71 & \cellcolor{lightgreen}98.71 &\cellcolor{intnull} 98.71 & \cellcolor{intnull}98.69 & \cellcolor{intnull} 98.57 \\ \cline{2-8}
+		\hline 
+	\end{tabular} 
+	\caption[Something]{\textbf{Something:}The quick fox jumped over the lazy dog. }
+	\label{table19}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline 
+		&\textbf{Singles} & \textbf{Duplets} & \textbf{Triplets} & \textbf{Quadruplets} & \\ 	\hline 
+		Day5\_1 &100 & 100 & 100 & 100 & OVA\_1 \\	\hline
+		Day5\_2 & 100 & 100 & 100 & 100 & OVA\_2 \\	\hline
+		Day5\_3 & 90.9 & 100 & 100 & 100 & OVA\_3 \\	\hline
+		Day14\_1 & 100 & 100 & 100 & 100 & OVA\_4 \\	\hline 
+		Day14\_2 & 100 & 100 & 100 & 100 & OVA\_5 \\	\hline
+		Day14\_3 &100 &100 &63.6 &60 &OVA\_6 \\	\hline
+		Day60\_1\_1 & 100 &100 &100 &\cellcolor{red}0 &OVA\_7 \\	\hline
+		Day60\_1\_2 & 81.81 &100 &100 &100 &OVA\_8 \\	\hline
+		Day60\_1\_3 & 100 &100 &100 &100 &OVA\_9 \\	\hline
+		Day5\_4 & 100 &100 &100 &60 &CFA\_1 \\	\hline
+		Day5\_5 & 100 & \cellcolor{red} 18.1 &100 &100 &CFA\_2 \\	\hline
+		Day5\_6 & 100 &100 &100 &60 &CFA\_3 \\	\hline
+		Day14\_4 & \cellcolor{red}0 & \cellcolor{red}0 & \cellcolor{red}0 & \cellcolor{red}20 &CFA\_4 \\	\hline
+		Day14\_5 &100 &100 &100 &100 &CFA\_5 \\	\hline
+		Day14\_6 & 90.9 &100 &100 &60 &CFA\_6 \\	\hline
+		Day60\_1\_4 & \cellcolor{red}0 & \cellcolor{red}0 &72.7 & \cellcolor{red}0 &CFA\_7 \\	\hline
+		Day60\_1\_5 & 100 &100 &100 &100 &CFA\_8 \\	\hline
+		Day60\_1\_6 & \cellcolor{red}0 &90.9 &100 &100 &CFA\_9 \\	\hline
+		OSE & 83\% &89\% &94\% &83\% &\\	\hline
+		\# of features &17 &17 &12 &11 &\\	\hline 
+	\end{tabular}
+	\caption[]{The quick fox jumped over the lazy dog.}
+	\label{table20}
+\end{table}
+\lipsum
+
+\section{Future Work}\label{FutureWork}
+\lipsum
+%You could separate these out into different files if you have particularly large appendices.
+
+%This line manually adds the Bibliography to the table of contents.
+%The fact that \include is the last thing before this ensures that it is on a clear page, and adding it like this means that it does not get a chapter or appendix number.
+\addcontentsline{toc}{chapter}{Bibliography}
+
+% Actually generates your bibliography.
+\part*{Bibliography}
+%\bibliography{example}
+\bibliography{PhDThesis}
+% All done. \o/
+\end{document}
+
