@@ -1,2 +1,2 @@
-# UCL_PhD_Latex_template
+# UCL PhD Latex template
 A template for a Thesis in Latex using UCL standards
